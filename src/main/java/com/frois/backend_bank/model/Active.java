@@ -10,17 +10,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "ativo")
 @Getter
 @Setter
 @AllArgsConstructor
-public class User {
+public class Active {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String codigo;
     private String nome;
-    private String email;
-    private Double corretagem;
+    private Double valor;
 
 }

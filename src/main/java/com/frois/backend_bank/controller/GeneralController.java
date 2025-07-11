@@ -1,5 +1,7 @@
 package com.frois.backend_bank.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,12 +32,16 @@ public class GeneralController {
     }
 
     @PostMapping("/{id}")
-    public String helloWordPost(
+    public ResponseEntity<String> helloWordPost(
             @PathVariable String id,
             @RequestParam(value = "filter", defaultValue = "empty") String param,
             @RequestBody User body) {
 
-        return "Hello World " + body.getNome() + id + param;
+        if (body.getNome().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não permitido");
+        }
+
+        return ResponseEntity.ok("Hello World " + body.getNome() + id + param);
     }
 
     @GetMapping("/get-users")

@@ -1,5 +1,7 @@
 package com.frois.backend_bank.model;
 
+import java.sql.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,17 +12,21 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "operacao")
 @Getter
 @Setter
 @AllArgsConstructor
-public class User {
+public class Operation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nome;
-    private String email;
+    private Integer usuario_id;
+    private Integer ativo_id;
+    private Integer quantidade;
+    private Double preco_unitario;
+    private String tipo_operacao;
     private Double corretagem;
+    private Date data_operacao;
 
 }
